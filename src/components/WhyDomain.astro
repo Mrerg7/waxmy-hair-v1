@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+
+const values = await getCollection('values');
+---
+
+<section id="why" class="max-w-7xl mx-auto px-6 py-16 md:py-20 border-t border-[#EDE4D7]">
+  <div class="text-center mb-12">
+    <div class="inline-block modern-pill mb-3">RARE &amp; STRATEGIC</div>
+    <h2 class="section-header tracking-tight">Why waxmy.hair is a premium asset</h2>
+    <p class="mt-4 max-w-md mx-auto text-[#5C5C5C]">A perfect blend of memorability, keyword strength, and niche relevance in the exploding hair removal and grooming market.</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {values.map((v) => (
+      <div class="value-card bg-white border border-[#EDE4D7] rounded-3xl p-8">
+        <div class="w-12 h-12 bg-[#F8F1E9] rounded-2xl flex items-center justify-center mb-6">
+          <i class={`${v.data.icon} text-[#B85C38] text-2xl`}></i>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-3">{v.data.title}</h3>
+        <p class="text-[#5C5C5C] leading-relaxed">{v.data.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

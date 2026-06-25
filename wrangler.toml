@@ -1,0 +1,6 @@
+name = "waxmy-hair"
+compatibility_date = "2026-06-25"
+
+[assets]
+directory = "./dist"
+html_handling = "auto-trailing-slash"
