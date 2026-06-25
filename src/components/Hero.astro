@@ -1,8 +1,11 @@
-<header
-  class="relative overflow-hidden bg-cover bg-center"
+<!-- Parallax background -->
+<div
+  class="fixed inset-0 z-0 bg-cover bg-center"
   style="background-image: linear-gradient(rgba(45, 45, 45, 0.72), rgba(45, 45, 45, 0.78)), url('https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b22a522c-07d1-429e-ce17-7167a4a31b00/public');"
->
-  <div class="relative z-10 max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-20 md:pb-24 text-center">
+></div>
+
+<header class="relative z-10 h-screen flex items-center justify-center overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6 text-center">
     <div class="inline-flex items-center gap-x-2 mb-6">
       <div class="seo-badge flex items-center gap-x-2 px-5 py-1.5 rounded-2xl text-sm font-bold tracking-[1px]">
         <i class="fa-solid fa-search fa-sm"></i>
@@ -45,5 +48,6 @@
     </div>
   </div>
 
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent z-10"></div>
+  <!-- Bottom fade into cream -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8F1E9] to-transparent"></div>
 </header>
