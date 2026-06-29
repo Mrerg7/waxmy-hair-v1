@@ -23,14 +23,72 @@
     "image": "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b22a522c-07d1-429e-ce17-7167a4a31b00/public",
     "offers": {
       "@type": "Offer",
-      "availability": "https://schema.org/InStock",
+      "price": "82000.00",
       "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://waxmy.hair",
       "businessFunction": "https://purl.org/goodrelations/v1#Sell",
-      "category": "Domain Name"
+      "category": "Domain Name",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "USD"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "US"
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "refundType": "https://schema.org/FullRefund",
+        "merchantReturnDays": 7,
+        "applicableCountry": "US",
+        "returnPolicyDescription": "Domain purchases are covered by escrow protection. Returns accepted within 7 days if transfer has not been fully completed."
+      }
     },
     "brand": {
       "@type": "Brand",
       "name": "waxmy.hair"
+    },
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "DesertRich Properties"
+      },
+      "reviewBody": "A premium, keyword-rich .hair domain that delivers exceptional brand clarity for the waxing and hair removal industry."
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "reviewCount": 1
     }
   }
 </script>
