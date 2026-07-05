@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — waxmy.hair"
+  description="The page you requested could not be found on waxmy.hair."
+  noindex={true}
+>
+  <main class="min-h-screen flex items-center justify-center px-6 bg-[#FAF7F2]">
+    <div class="text-center max-w-md">
+      <p class="text-6xl font-bold text-[#B85C38] mb-4">404</p>
+      <h1 class="text-2xl font-semibold text-[#2D2D2D] mb-3">Page not found</h1>
+      <p class="text-[#4A5D4A] mb-8">
+        The page you are looking for does not exist. Visit the homepage to learn about the waxmy.hair
+        domain.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center px-6 py-3 bg-[#B85C38] hover:bg-[#A04E30] text-white font-semibold rounded-2xl transition-colors"
+      >
+        Go to homepage
+      </a>
+    </div>
+  </main>
+</BaseLayout>
