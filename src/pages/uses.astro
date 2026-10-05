@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, pageTitle, uses } from "../data";
+
+const title = pageTitle("Uses");
+const description = "Ways to use waxmy.hair: waxing studio, at-home kits, mobile service, booking, training, or a grooming brand. One domain, price on request.";
+const jsonLd = { "@context": "https://schema.org", "@type": "CollectionPage", name: title, description, url: `${SITE}/uses` };
+---
+
+<BaseLayout title={title} description={description} path="/uses">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <p class="text-muted"><a href="/">Home</a> / Uses</p>
+    <p class="mt-6 text-accent">One asset, several rooms</p>
+    <h1 class="mt-2 max-w-2xl font-display text-5xl leading-none">Where waxmy.hair can live</h1>
+    <p class="mt-4 max-w-2xl text-muted">This is not a catalog of other domains. It is the same name, sorted by the business that might wear it.</p>
+    <div class="mt-6 flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Filter uses">
+      <button type="button" data-filter="all" aria-selected="true" class="min-h-12 shrink-0 rounded-full border border-line bg-surface px-4">All</button>
+      {uses.map((item) => (
+        <button type="button" data-filter={item.id} aria-selected="false" class="min-h-12 shrink-0 rounded-full border border-line bg-surface px-4">{item.label}</button>
+      ))}
+    </div>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {uses.map((item) => (
+        <article id={item.id} data-use={item.id} class="scroll-mt-24 rounded-3xl border border-line bg-surface p-6">
+          <p class="text-muted">{item.label}</p>
+          <h2 class="mt-2 font-display text-3xl">{item.title}</h2>
+          <p class="mt-3 text-muted">{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

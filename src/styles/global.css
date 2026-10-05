@@ -1,63 +1,106 @@
 @import "tailwindcss";
 
-@theme {
-  --color-warm-50: #F8F1E9;
-  --color-warm-100: #EDE4D7;
-  --color-warm-200: #D4C9B8;
-  --color-terracotta: #B85C38;
-  --color-terracotta-hover: #A04E30;
-  --color-dark: #2D2D2D;
-  --color-muted: #5C5C5C;
-  --color-subtle: #6B6B6B;
-  --color-sage: #4A5D4A;
-  --color-cream: #F8F1E9;
-  --font-sans: 'Inter', system-ui, sans-serif;
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/outfit-400.woff2") format("woff2");
 }
-
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/outfit-500.woff2") format("woff2");
 }
-
-.section-header {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--color-dark);
-}
-
-.domain-name {
-  font-size: clamp(3rem, 8vw, 4.5rem);
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--color-dark);
-}
-
-.value-card {
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-}
-
-.modern-pill {
-  background: rgba(184, 92, 56, 0.08);
-  color: var(--color-terracotta);
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
   font-weight: 600;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  font-display: swap;
+  src: url("/fonts/outfit-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/fraunces-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/fraunces-600.woff2") format("woff2");
 }
 
-.seo-badge {
-  background: linear-gradient(90deg, #B85C38, #8B3D1F);
-  color: white;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-soft: var(--soft);
+}
+
+:root {
+  --bg: #f3eee6;
+  --surface: #fffdf9;
+  --ink: #1c1612;
+  --muted: #6a6158;
+  --line: #e3d8cb;
+  --accent: #9c4630;
+  --on-accent: #fff8f4;
+  --soft: #f7f1e8;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #12100e;
+  --surface: #1c1916;
+  --ink: #f6f1ea;
+  --muted: #b3a89e;
+  --line: #332c27;
+  --accent: #e08a72;
+  --on-accent: #1c1612;
+  --soft: #221e1a;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  button:not(:disabled),
+  summary,
+  [role="button"] {
+    cursor: pointer;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+[data-filter][aria-selected="true"] {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: transparent;
 }

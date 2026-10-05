@@ -1,12 +1,13 @@
+# Cloudflare Workers Static Assets — free plan, no Worker script.
 name = "waxmy-hair-v1"
-main = "src/worker.ts"
-compatibility_date = "2026-06-25"
+compatibility_date = "2026-10-05"
 workers_dev = false
 preview_urls = false
 
+[build]
+command = "npm run build"
+
 [assets]
 directory = "./dist"
-binding = "ASSETS"
-run_worker_first = true
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"

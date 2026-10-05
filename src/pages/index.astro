@@ -1,25 +1,124 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import WhyDomain from '../components/WhyDomain.astro';
-import SEOAdvantage from '../components/SEOAdvantage.astro';
-import UseCases from '../components/UseCases.astro';
-import AcquisitionCTA from '../components/AcquisitionCTA.astro';
-import Footer from '../components/Footer.astro';
-import StructuredData from '../components/StructuredData.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OfferForm from "../components/OfferForm.astro";
+import { DOMAIN, SITE, facts, homeDescription, pageTitle, phrases, reasons, steps, uses } from "../data";
+
+const title = pageTitle();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": `${SITE}/#org`, name: "Desert Rich", url: SITE, email: "sales@desertrich.com" },
+    { "@type": "WebSite", "@id": `${SITE}/#site`, name: DOMAIN, url: SITE, description: homeDescription, publisher: { "@id": `${SITE}/#org` } },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE}/#page`,
+      url: `${SITE}/`,
+      name: title,
+      description: homeDescription,
+      isPartOf: { "@id": `${SITE}/#site` },
+      about: { "@type": "Thing", name: DOMAIN, description: "Premium .hair domain available for acquisition." },
+    },
+  ],
+};
 ---
 
-<BaseLayout
-  title="waxmy.hair — Rare Premium Domain for Sale | Built-in SEO"
-  description="Own waxmy.hair — the rare, memorable domain with powerful SEO built directly into the name. Perfect for professional waxing, hair removal, and grooming brands."
->
-  <Header />
-  <Hero />
-  <WhyDomain />
-  <SEOAdvantage />
-  <UseCases />
-  <AcquisitionCTA />
-  <Footer />
-  <StructuredData />
+<BaseLayout title={title} description={homeDescription} path="/">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:py-20">
+    <div>
+      <p class="text-accent">Available · one spelling</p>
+      <h1 class="mt-3 font-display text-6xl leading-none tracking-tight sm:text-7xl">waxmy<span class="text-accent">.hair</span></h1>
+      <p class="mt-5 max-w-md text-xl leading-snug">Own the phrase people say when they want a wax.</p>
+      <p class="mt-3 max-w-md text-muted">Short, exact, and already sitting on .hair. Price on request. Built for a studio, a kit line, or a booking brand.</p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a href="#offer" class="inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-5 text-on-accent">Make an offer</a>
+        <a href="/acquire" class="inline-flex min-h-12 items-center justify-center rounded-full border border-line bg-surface px-5">How transfer works</a>
+      </div>
+      <p class="mt-4 text-muted">Escrow welcome · nothing charged on this page</p>
+    </div>
+    <figure class="relative">
+      <img src="/media/studio.jpg" alt="Honey-colored wax, an ivory comb, and a terracotta ribbon on linen" width="1400" height="933" fetchpriority="high" class="aspect-3/2 w-full rounded-3xl object-cover" />
+      <figcaption class="absolute inset-x-4 bottom-4 rounded-2xl border border-line bg-surface/95 p-4 backdrop-blur">
+        <p class="text-muted">For sale</p>
+        <p class="font-display text-2xl">{DOMAIN}</p>
+        <p class="text-muted">Price on request</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6" aria-label="Name facts">
+    <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4">
+      {facts.map((fact) => (
+        <div class="bg-surface p-4 sm:p-5">
+          <dt class="text-muted">{fact.label}</dt>
+          <dd class="mt-1 font-medium">{fact.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <p class="text-accent">Why it holds</p>
+    <h2 class="mt-2 max-w-2xl font-display text-4xl sm:text-5xl">A name you do not have to explain twice</h2>
+    <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {reasons.map((reason) => (
+        <article class="rounded-3xl border border-line bg-surface p-5">
+          <h3 class="font-display text-2xl">{reason.title}</h3>
+          <p class="mt-2 text-muted">{reason.body}</p>
+        </article>
+      ))}
+    </div>
+    <p class="mt-6"><a class="inline-flex min-h-12 items-center text-accent" href="/why">Read the case for the name</a></p>
+  </section>
+
+  <section class="border-y border-line bg-soft">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <p class="text-accent">Search language</p>
+      <h2 class="mt-2 max-w-xl font-display text-4xl">The domain is not a ranking. It is the phrase.</h2>
+      <p class="mt-3 max-w-2xl text-muted">People look up waxing in plain words. {DOMAIN} already contains them. Pair that with a real site and a real location if you want to be found. The name alone will not do it.</p>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {phrases.map((phrase) => <li class="rounded-full border border-line bg-surface px-4 py-3">{phrase}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-accent">Fits</p>
+        <h2 class="mt-2 font-display text-4xl">Six ways to wear it</h2>
+      </div>
+      <a href="/uses" class="inline-flex min-h-12 items-center text-accent">Filter the uses</a>
+    </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {uses.map((use) => (
+        <a href={`/uses#${use.id}`} class="rounded-3xl border border-line bg-surface p-5 hover:border-accent">
+          <p class="text-muted">{use.label}</p>
+          <h3 class="mt-2 font-display text-2xl">{use.title}</h3>
+          <p class="mt-2 text-muted">{use.body}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-line">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+      <div>
+        <p class="text-accent">Close</p>
+        <h2 class="mt-2 font-display text-4xl">Three steps, then the name moves</h2>
+        <ol class="mt-6 grid gap-4">
+          {steps.map((step) => (
+            <li class="grid grid-cols-[auto_1fr] gap-4 rounded-3xl border border-line bg-surface p-5">
+              <span class="font-display text-2xl text-accent">{step.n}</span>
+              <div>
+                <h3 class="font-display text-2xl">{step.title}</h3>
+                <p class="mt-1 text-muted">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <OfferForm />
+    </div>
+  </section>
 </BaseLayout>

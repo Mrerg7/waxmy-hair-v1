@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { DOMAIN, SITE, pageTitle } from "../data";
+
+const title = pageTitle("Valuation guide");
+const description = "How to think about an exact-phrase premium domain like waxmy.hair: length, TLD fit, commercial intent, and what a sale does not include.";
+const sections = [
+  ["Start with the job, not the TLD chart", "Price follows use. A studio that will put the name on the door, the booking link, and the van is buying a brand. A speculator who wants a quick flip is buying a maybe. Those are different offers, and only the first one tends to close."],
+  ["What actually moves the number", "Length you can say. A phrase people already use. An extension that sits in the same aisle as the business. A clean handoff, with no trademark tangle you would have to unwind. None of those are a substitute for the business you still have to build."],
+  ["What does not belong in the price", "Do not pay for imaginary traffic. This sales site does not claim rankings, type-in volume, or a backlink profile you can inherit. If someone sends a spreadsheet of estimated searches, ask which tool, which country, and whether the query is the brand or the service. Then discount it."],
+  ["Comparable sales are cousins, not twins", "A one-word .com in a public aftermarket report is not this name. A niche extension with an exact service phrase trades on memory and category, not on the same math as a dictionary .com. Use comps as a ceiling check, not as a formula."],
+  ["A clean close", "Agree the number in writing. Use escrow if you do not yet trust the wire. Confirm the auth code moves the name into an account you control. Walk away from anyone who asks you to pay a holding deposit to a new address mid-thread."],
+];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "How to read an exact-phrase service name",
+  description,
+  url: `${SITE}/guide`,
+  author: { "@type": "Organization", name: "Desert Rich" },
+  about: DOMAIN,
+};
+---
+
+<BaseLayout title={title} description={description} path="/guide">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <article class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+    <p class="text-muted"><a href="/">Home</a> / Guide</p>
+    <p class="mt-6 text-accent">Notes, not an appraisal</p>
+    <h1 class="mt-2 font-display text-5xl leading-none">How to read a name like this</h1>
+    <p class="mt-5 text-xl">Buyers ask what waxmy.hair is “worth.” A serious answer is a range after a conversation, not a sticker invented for a landing page.</p>
+    {sections.map(([heading, body]) => (
+      <section class="mt-8">
+        <h2 class="font-display text-3xl">{heading}</h2>
+        <p class="mt-3 text-muted">{body}</p>
+      </section>
+    ))}
+    <p class="mt-8 text-muted">If you want the asking range for {DOMAIN}, say so. The desk would rather answer than watch a guess harden into a rumor.</p>
+    <p class="mt-4"><a class="inline-flex min-h-12 items-center text-accent" href="/acquire">Go to the offer</a></p>
+  </article>
+</BaseLayout>

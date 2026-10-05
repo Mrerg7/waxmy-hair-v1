@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OfferForm from "../components/OfferForm.astro";
+import { DOMAIN, SALES, SITE, pageTitle, steps } from "../data";
+
+const title = pageTitle("Acquire");
+const description = "Acquire waxmy.hair. Make an offer, ask for the range, or contact the agent at sales@desertrich.com. Escrow welcome. Price on request.";
+const jsonLd = { "@context": "https://schema.org", "@type": "WebPage", name: title, description, url: `${SITE}/acquire` };
+const excluded = [
+  "No website, logo system, or content library",
+  "No customer list, reviews, or booked appointments",
+  "No trademark registration and no ranking guarantee",
+  "No affiliation with a salon brand that happens to use similar words",
+];
+---
+
+<BaseLayout title={title} description={description} path="/acquire">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2">
+    <div>
+      <p class="text-muted"><a href="/">Home</a> / Acquire</p>
+      <p class="mt-6 text-accent">Acquisition</p>
+      <h1 class="mt-2 font-display text-5xl leading-none">Take {DOMAIN}</h1>
+      <p class="mt-4 text-muted">Three ways in: send a number, ask for the range, or write {SALES} in your own words. The buttons below open email. This page does not take a card.</p>
+      <ol class="mt-8 grid gap-4">
+        {steps.map((step) => (
+          <li class="rounded-3xl border border-line bg-surface p-5">
+            <p class="font-display text-2xl text-accent">{step.n}</p>
+            <h2 class="font-display text-2xl">{step.title}</h2>
+            <p class="mt-1 text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-6 rounded-3xl border border-line bg-soft p-5">
+        <h2 class="font-display text-2xl">Not included</h2>
+        <ul class="mt-3 grid gap-2 text-muted">
+          {excluded.map((line) => <li>{line}</li>)}
+        </ul>
+      </div>
+    </div>
+    <OfferForm />
+  </div>
+</BaseLayout>

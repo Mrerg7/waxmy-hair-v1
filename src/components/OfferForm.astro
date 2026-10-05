@@ -1,0 +1,31 @@
+---
+import { DOMAIN, SALES, blankMailto } from "../data";
+---
+
+<form data-offer id="offer" class="grid gap-4 rounded-3xl border border-line bg-surface p-5 sm:p-6">
+  <div>
+    <h2 class="font-display text-3xl">Make an offer</h2>
+    <p class="mt-2 text-muted">Opens a draft to {SALES}. Nothing is saved on this site.</p>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="grid gap-1">Name
+      <input required name="name" autocomplete="name" class="min-h-12 rounded-2xl border border-line bg-bg px-3" />
+    </label>
+    <label class="grid gap-1">Email
+      <input required type="email" name="email" autocomplete="email" class="min-h-12 rounded-2xl border border-line bg-bg px-3" />
+    </label>
+  </div>
+  <label class="grid gap-1">Offer in USD, or “range”
+    <input name="amount" inputmode="decimal" placeholder="On request" class="min-h-12 rounded-2xl border border-line bg-bg px-3" />
+  </label>
+  <label class="grid gap-1">How you would use {DOMAIN}
+    <textarea name="note" rows="4" class="rounded-2xl border border-line bg-bg px-3 py-3"></textarea>
+  </label>
+  <div class="flex flex-col gap-3 sm:flex-row">
+    <button type="submit" class="min-h-12 flex-1 rounded-full bg-accent px-4 text-on-accent">Email the offer</button>
+    <button type="button" data-copy class="min-h-12 rounded-full border border-line px-4">Copy address</button>
+  </div>
+  <p class="text-muted">
+    Prefer a blank note? <a class="text-accent underline decoration-line underline-offset-4" href={blankMailto}>Contact the agent</a>.
+  </p>
+</form>

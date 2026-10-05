@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, faqs, pageTitle } from "../data";
+
+const title = pageTitle("FAQ");
+const description = "Buyer questions on waxmy.hair: price on request, what transfers, escrow, timing, and what the domain does not include.";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  url: `${SITE}/faq`,
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} path="/faq">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+    <p class="text-muted"><a href="/">Home</a> / FAQ</p>
+    <p class="mt-6 text-accent">Buyer questions</p>
+    <h1 class="mt-2 font-display text-5xl leading-none">Straight answers</h1>
+    <div class="mt-8 grid gap-3">
+      {faqs.map((item) => (
+        <details class="rounded-3xl border border-line bg-surface px-5 py-2">
+          <summary class="min-h-12 list-none py-3 font-medium">{item.q}</summary>
+          <p class="pb-4 text-muted">{item.a}</p>
+        </details>
+      ))}
+    </div>
+    <p class="mt-8"><a class="inline-flex min-h-12 items-center text-accent" href="/acquire">Still want it? Write the desk</a></p>
+  </div>
+</BaseLayout>
